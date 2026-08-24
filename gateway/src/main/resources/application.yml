@@ -1,0 +1,33 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: gateway
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/user/**
+        - id: book-service
+          uri: lb://book-service
+          predicates:
+            - Path=/api/book/**
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/api/borrow/**,/api/cart/**,/api/purchase/**,/api/after-sale/**
+        - id: message-service
+          uri: lb://message-service
+          predicates:
+            - Path=/api/message/**

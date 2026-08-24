@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: book-service
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+  config:
+    import:
+      - optional:nacos:book-service.yaml

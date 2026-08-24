@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: book-service
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+  config:
+    import:
+      - optional:nacos:book-service.yaml
+  datasource:
+    url: jdbc:mysql://localhost:3306/test02?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+server:
+  port: 8082
+
+upload:
+  path: D:/Desktop/sping/book-service/uploads
+
+logging:
+  level:
+    com.sping: DEBUG
+
+sentinel:
+  transport:
+    dashboard: localhost:8080
+
+feign:
+  sentinel:
+    enabled: true

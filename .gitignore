@@ -1,0 +1,28 @@
+# IDE
+.idea/
+.trae/
+.vscode/
+
+# WorkBuddy
+.workbuddy/
+
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+
+# Node
+sping-frontend/node_modules/
+sping-frontend/dist/
+
+# Logs
+*.log
+logs/
+
+# Runtime uploads (uncomment if you want to keep them)
+uploads/
+
+# OS
+.DS_Store
+Thumbs.db
